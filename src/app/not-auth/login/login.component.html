@@ -1,0 +1,79 @@
+<!--
+
+  Puzzly - A puzzle game project
+ 
+    (C) 2024 Yasmine EL AAFIA <elaafiayasmine@gmail.com>
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    Puzzly is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<ion-content [fullscreen]="true">
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center">
+      <ng-lottie [options]="options" height="64px" width="64px" class="mx-auto"></ng-lottie>
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-200">
+        Connexion
+      </h2>
+    </div>
+
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <form [formGroup]="loginFormGroup" class="space-y-6" (submit)="handleSubmit()">
+        <div>
+          <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom
+            d'utilisateur</label>
+          <div class="mt-2">
+            <input formControlName="username" type="text" id="username" autocomplete="username"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="john" required />
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot de
+              passe</label>
+          </div>
+          <div class="mt-2">
+            <input formControlName="password" type="password" id="password" autocomplete="current-password"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="•••••••••" required />
+          </div>
+        </div>
+
+        <div>
+          <button [disabled]="isLoading" type="submit"
+            class="btn-puzzly focus:bg-opacity-50 w-full justify-center items-center disabled:bg-slate-300 dark:disabled:bg-slate-700">
+            <span *ngIf="!isLoading; else loadingTemplate">
+              Connexion
+            </span>
+            <ng-template #loadingTemplate>
+              <ng-lottie [options]="options" height="32px" width="32px"></ng-lottie>
+            </ng-template>
+          </button>
+        </div>
+      </form>
+
+      <div *ngIf="isError" class="text-red-800 dark:text-red-400">
+        {{errorMsg}}
+      </div>
+
+      <p class="mt-10 text-center text-sm text-gray-500">
+        Pas encore un membre?
+        <a routerLink="../register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Inscris
+          toi!</a>
+      </p>
+    </div>
+  </div>
+
+</ion-content>

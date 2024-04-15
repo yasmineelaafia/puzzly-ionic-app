@@ -1,0 +1,60 @@
+<!--
+
+  Puzzly - A puzzle game project
+ 
+    (C) 2024 Yasmine EL AAFIA <elaafiayasmine@gmail.com>
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    Puzzly is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Paramètres</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Paramètres</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Section A</ion-label>
+      </ion-item-divider>
+
+      <ion-item>
+        <ion-label>Paramètre 1</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Paramètre 2</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Paramètre 3</ion-label>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Authentification</ion-label>
+      </ion-item-divider>
+      <ion-item (click)="logout()" lines="none">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+          Déconnexion
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

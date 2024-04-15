@@ -1,0 +1,53 @@
+<!--
+    Puzzly - A puzzle game project
+ 
+    (C) 2024 Yasmine EL AAFIA <elaafiayasmine@gmail.com>
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    Puzzly is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Selection</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Selection</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card routerLink="../solo">
+    <img alt="Solo game" src="assets/img/solo.jpeg" />
+    <ion-card-header>
+      <ion-card-title>Solo</ion-card-title>
+      <ion-card-subtitle>Jouer seul</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Resolvez vite le puzzle et placez vous dans le top classement de votre réseau
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card routerLink="../voice">
+    <img alt="Voice game" src="assets/img/voice.jpeg" />
+    <ion-card-header>
+      <ion-card-title>Voix</ion-card-title>
+      <ion-card-subtitle>Jouer avec des commandes vocales</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Resolvez vite le puzzle en utilisant des commandes vocales
+    </ion-card-content>
+  </ion-card>
+</ion-content>

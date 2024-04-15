@@ -1,0 +1,63 @@
+<!--
+
+  Puzzly - A puzzle game project
+ 
+    (C) 2024 Yasmine EL AAFIA <elaafiayasmine@gmail.com>
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    Puzzly is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>voice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">voice</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div *ngFor="let cmd of voiceCommands" class="w-full my-3 mx-2">
+    <app-message [content]="cmd"></app-message>
+  </div>
+
+
+</ion-content>
+
+<ion-footer class="border-b-2 border-b-gray-500">
+  <ion-toolbar>
+    <ion-row class="items-center justify-between p-4">
+      @if (isRecording && durationDisplay !== "") {
+      <div class="flex justify-center items-center gap-1">
+        <ng-lottie [options]="options" height="32px" width="32px"></ng-lottie>
+        <span>{{durationDisplay}}</span>
+      </div>
+      }
+      @else if (isProcessing) {
+      <span>Traitement en cours...</span>
+      }
+      @else {
+      <span>Appuyez pour enregistrer</span>
+      }
+
+
+      <ion-fab-button size="80" [disabled]="isProcessing" (pointerdown)="startRecording()" (pointerup)="stopRecording()">
+        <ion-icon name="mic"></ion-icon>
+      </ion-fab-button>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

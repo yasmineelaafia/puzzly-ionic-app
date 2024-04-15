@@ -1,0 +1,149 @@
+<!--
+
+  Puzzly - A puzzle game project
+ 
+    (C) 2024 Yasmine EL AAFIA <elaafiayasmine@gmail.com>
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    Puzzly is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<ion-content>
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center">
+      <ng-lottie [options]="options" height="64px" width="64px" class="mx-auto"></ng-lottie>
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-200">
+        Inscription
+      </h2>
+    </div>
+
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <form [formGroup]="signupFormGroup" (submit)="onSubmit()">
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <div>
+            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prénom</label>
+            <input tabindex="0" [ngClass]="{
+              'border-red-700 dark:border-red-400': (fName?.invalid && (fName?.touched || fName?.dirty)),
+              'border-green-700 dark:border-green-400': (fName?.valid && (fName?.touched || fName?.dirty)),
+              'border-gray-300 dark:border-gray-600': (!fName?.touched && !fName?.dirty)
+              }" formControlName="fName" type="text" id="first_name"
+              class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="John" />
+            <div class="text-red-600" *ngIf="fName?.invalid && (fName?.touched || fName?.dirty)">
+              <ul>
+                <li *ngIf="fName?.errors?.['required']">
+                  Prénom requis
+                </li>
+                <li *ngIf="fName?.errors?.['pattern']">
+                  Chaque mot du prénom doit commencer avec une majuscule
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom</label>
+            <input tabindex="1" [ngClass]="{
+              'border-red-700 dark:border-red-400': (lName?.invalid && (lName?.touched || lName?.dirty)),
+              'border-green-700 dark:border-green-400': (lName?.valid && (lName?.touched || lName?.dirty)),
+              'border-gray-300 dark:border-gray-600': (!lName?.touched && !lName?.dirty)
+              }" formControlName="lName" type="text" id="last_name"
+              class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Doe" />
+            <div class="text-red-600" *ngIf="lName?.invalid && (lName?.touched || lName?.dirty)">
+              <ul>
+                <li *ngIf="lName?.errors?.['required']">
+                  Nom requis
+                </li>
+                <li *ngIf="lName?.errors?.['pattern']">
+                  Chaque mot du nom doit commencer avec une majuscule
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="mb-6">
+          <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom
+            d'utilisateur</label>
+          <input tabindex="2" [ngClass]="{
+            'border-red-700 dark:border-red-400': (username?.invalid && (username?.touched || username?.dirty)),
+            'border-green-700 dark:border-green-400': (username?.valid && (username?.touched || username?.dirty)),
+            'border-gray-300 dark:border-gray-600': (!username?.touched && !username?.dirty)
+            }" formControlName="username" type="text" id="username"
+            class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="john.doe" />
+          <div class="text-red-600" *ngIf="username?.invalid && (username?.touched || username?.dirty)">
+            <ul>
+              <li *ngIf="username?.errors?.['required']">
+                Nom d'utilisateur requis
+              </li>
+              <li *ngIf="username?.errors?.['pattern']">
+                Nom d'utilisateur doit être écrit en minuscule et separé avec '.' ou '_' avec 8 characteres minimum
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mb-6">
+          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot de
+            passe</label>
+          <input tabindex="3" [ngClass]="{
+            'border-red-700 dark:border-red-400': (password?.invalid && (password?.touched || password?.dirty)),
+            'border-green-700 dark:border-green-400': (password?.valid && (password?.touched || password?.dirty)),
+            'border-gray-300 dark:border-gray-600': (!password?.touched && !password?.dirty)
+            }" formControlName="password" type="password" id="password"
+            class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="•••••••••" required />
+          <div class="text-red-600" *ngIf="password?.invalid && (password?.touched || password?.dirty)">
+            <ul>
+              <li *ngIf="password?.errors?.['required']">
+                Mot de passe requis
+              </li>
+              <li *ngIf="password?.errors?.['minlength']">
+                Le mot de passe doit contenir au moins 8 charactères, valeur actuelle :
+                {{password?.errors?.['minlength'].actualLength}}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mb-6">
+          <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmer
+            mot de passe</label>
+          <input tabindex="4" [ngClass]="{
+            'border-red-700 dark:border-red-400': (passwordConfirm?.invalid && (passwordConfirm?.touched || passwordConfirm?.dirty)),
+            'border-green-700 dark:border-green-400': (passwordConfirm?.valid && (passwordConfirm?.touched || passwordConfirm?.dirty)),
+            'border-gray-300 dark:border-gray-600': (!passwordConfirm?.touched && !passwordConfirm?.dirty)
+            }" formControlName="passwordConfirm" type="password" id="confirm_password"
+            class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="•••••••••" />
+          <div class="text-red-600"
+            *ngIf="passwordConfirm?.invalid && (passwordConfirm?.touched || passwordConfirm?.dirty)">
+            <ul>
+              <li *ngIf="passwordConfirm?.errors?.['required']">
+                Mot de passe requis
+              </li>
+              <li *ngIf="passwordConfirm?.errors?.['dontMatch']">
+                Les mots de passes ne sont pas identiques
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button [disabled]="!signupFormGroup.valid" type="submit"
+          class="text-white disabled:bg-gray-300 dark:disabled:bg-gray-800 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+      </form>
+
+      <p class="mt-10 text-center text-sm text-gray-500">
+        Déjà un membre?
+        <a routerLink="../login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Connecte toi!</a>
+      </p>
+    </div>
+  </div>
+</ion-content>
